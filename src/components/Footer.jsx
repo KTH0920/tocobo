@@ -1,5 +1,6 @@
 import React from 'react';
-import { logoData, companyData, customerCenterData, footerMenus } from "../util/footer";
+import { logoData, companyData, customerCenterData, footerMenus, socialLinks } from "../util/footer";
+
 import "../styles/components/footer.scss"
 
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="inner foot-inner">
         <div className="left">
-        <h3>
+          <h3>
             <a href={logoData.href}>
               <img src={logoData.src} alt={logoData.alt} />
             </a>
@@ -53,6 +54,18 @@ const Footer = () => {
               {customerCenterData.talk.label}
             </a>
           </div>
+          <ul className="sns-links">
+            {socialLinks.map((sns) => (
+              <li key={sns.id}>
+                <a href={sns.href} 
+                target="_blank" rel="noreferrer noopener" 
+                aria-label={sns.label} 
+                title={sns.label}>
+                  {React.createElement(sns.icon, { size: 22, "aria-hidden": true })}                                  
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
